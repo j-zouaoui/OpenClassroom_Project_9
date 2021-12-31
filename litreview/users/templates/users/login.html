@@ -1,0 +1,33 @@
+{% extends "accounts/base_generic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row d-flex border border-secondary" style="height: 300px">
+    <!-- Register section -->
+    <div class="col w-100">
+      <div class="row d-flex justify-content-center">
+        <h5 class="text-center mt-5">Inscription-vous maintenant</h5>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <a href="{% url 'register' %} " class="btn btn-secondary text-center mt-5" role="button" >S'inscrire</a>
+      </div>
+    </div>
+
+    <!-- Login Section -->
+    <div class="col w-100">
+      <h5 class="text-center mt-5">Connectez-vous</h5>
+      <!-- Login Form -->
+      <form method="POST" action="#" >
+        <div class="text-center mt-1">
+          {% csrf_token %}
+          {{form|crispy}}
+        </div>
+
+        <button type="submit" class="btn btn-secondary mt-4">Submit</button>
+      </form>
+
+      {% for message in messages %} {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
